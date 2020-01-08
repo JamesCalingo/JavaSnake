@@ -5,32 +5,29 @@ context.scale(10, 10);
 
 // Movement using arrow keys
 document.onkeyup = function(e){
-  // // DOWN
-  // if(e.which == 38){
-  //   direction = [0, -1];
-  //   // UP
-  // }else if (e.which = 40){
-      // direction = [0, 1]
-  // }
-switch (e.which){
-  case 37:
+switch (e.key){
+  case "ArrowLeft":
     // LEFT
     direction = [-1, 0]
+    console.log("Going LEFT")
     break;
   
-  case 38:
+  case "ArrowDown":
     // DOWN
-    direction = [0, -1]
+    direction = [0, 1]
+    console.log("Going DOWN")
     break;
 
-  case 39:
+  case "ArrowRight":
     // RIGHT
     direction = [1, 0]
+    console.log("going RIGHT")
     break;
 
-  case 40:
+  case "ArrowUp":
     // UP
-    direction = [0, 1]
+    direction = [0, -1]
+    console.log("Going UP")
     break
 }
 }
@@ -47,8 +44,8 @@ updateLoop = () =>{
   tail = snake.pop();
   head = snake[0];
   console.log(snake)
-  tail[0] = head[0] + keyboardState[0];
-  tail[1] = head[1] + keyboardState[1];
+  tail[0] = head[0] + direction[0];
+  tail[1] = head[1] + direction[1];
   snake.unshift(tail);
   draw();
 }
@@ -63,11 +60,4 @@ snake.forEach(function([x, y]) {
 draw()
 var direction = [1,0]
 
-// keyboardState = [0,-1]
-// tail = snake.pop();
-// head = snake[0];
-// tail[0] = head[0] + keyboardState[0];
-// tail[1] = head[1] + keyboardState[1];
-// snake.unshift(tail);
-// console.log(snake);
-// draw();
+setInterval(updateLoop, 800)
