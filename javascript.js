@@ -1,6 +1,7 @@
 var canvas = document.body.children[2];
 var context = canvas.getContext("2d");
 context.scale(10, 10);
+var score = 0
 
 
 // Movement using arrow keys
@@ -9,57 +10,83 @@ switch (e.key){
   case "ArrowLeft":
     // LEFT
     direction = [-1, 0]
-    console.log("Going LEFT")
+   
     break;
   
   case "ArrowDown":
     // DOWN
     direction = [0, 1]
-    console.log("Going DOWN")
     break;
 
   case "ArrowRight":
     // RIGHT
     direction = [1, 0]
-    console.log("going RIGHT")
     break;
 
   case "ArrowUp":
     // UP
     direction = [0, -1]
-    console.log("Going UP")
     break
 }
 }
 // Game components
 var snake = [
-  [0,0],
-  [1,0],
-  [2,0],
-  [3,0],
-  [4,0]
+  [10,11],
+  [10,12],
+  [10,13],
+  [10,14],
+  [10,15]
 ];
 
-var direction = [1,0]
-var apple = [Math.floor(Math.random() * 30) | 0,
-  Math.floor(Math.random() * 30) | 0]
+var direction = [1,0];
+var apple = [17,25];
 
+reset = () => {
+  score = 0;
+  snake = [
+    [10,11],
+    [10,12],
+    [10,13],
+    [10,14],
+    [10,15]
+  ];
+direction = [1,0];
+apple = [17,25];
+}
 // Rendering the game to the page
 updateLoop = () =>{
-  let head = snake[0]
   console.log(snake)
   snake.unshift([
     snake[0][0] + direction[0],
     snake[0][1] + direction[1]
   ]);
-
+// Scoring
   if(snake[0][0] == apple[0] &&
     snake[0][1] == apple[1]){
+      score++;
+      $("#score").html(score)
     apple = [Math.floor(Math.random() * 30) | 0,
       Math.floor(Math.random() * 30) | 0]
   }else{
     snake.pop()
   }
+// Game Over Conditions
+for(let i = 1; i < snake.length; i++){
+  if(snake[0][0] == snake[i][0] && snake[0][1] == snake[i][1]){
+    alert("BANG");
+    reset()
+  }
+  if(snake[0][0] >= 30 || snake[0][0] < 0){
+    alert("BANG");
+    reset()
+  }
+  if(snake[0][1] >= 30 || snake[0][1] < 0){
+    alert("BANG");
+    reset()
+  }
+
+}
+
   draw();
 }
 
@@ -84,13 +111,9 @@ setInterval(updateLoop, 300);
 
 
 // Game Over Conditions
-for (let i=1; i < snake.length; i++){
-  if(snake[0][0] == snake[i][0]){
-    clearInterval(updateLoop)
-    alert("BANG")
-  }
-}
-if(snake[0][0] > 30 || snake[0][0] < 0){
-  clearInterval(updateLoop)
-  alert("BANG")
-}
+// for (let i=1; i < snake.length; i++){
+//   if(snake[0][0] == snake[i][0]){
+//     clearInterval(updateLoop)
+//     alert("BANG")
+//   }
+// }
