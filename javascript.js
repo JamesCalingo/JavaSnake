@@ -44,24 +44,30 @@ var snake = [
 ];
 
 updateLoop = () =>{
-
+  tail = snake.pop();
+  head = snake[0];
+  console.log(snake)
+  tail[0] = head[0] + keyboardState[0];
+  tail[1] = head[1] + keyboardState[1];
+  snake.unshift(tail);
+  draw();
 }
 
 draw = () => {
-  context.clearRect(0, 0, Infinity, Infinity)
+  context.clearRect(0, 0, 300, 300)
 snake.forEach(function([x, y]) {
   context.fillRect(x, y, 1, 1)
 })
 }
 
 draw()
-var keyboardState = [0,0]
+var direction = [1,0]
 
-keyboardState = [0,1]
-tail = snake.pop();
-head = snake[0]
-tail[0] = head[0] + keyboardState[0]
-tail[1] = head[1] + keyboardState[1]
-snake.unshift(tail)
-console.log(snake)
-draw()
+// keyboardState = [0,-1]
+// tail = snake.pop();
+// head = snake[0];
+// tail[0] = head[0] + keyboardState[0];
+// tail[1] = head[1] + keyboardState[1];
+// snake.unshift(tail);
+// console.log(snake);
+// draw();
