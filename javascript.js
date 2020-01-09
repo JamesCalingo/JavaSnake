@@ -63,7 +63,7 @@ reset = () => {
   ];
 direction = [1,0];
 apple = [17,25];
-setInterval(updateLoop, 300)
+$("#score").html(0)
 }
 // Rendering the game to the page
 updateLoop = () =>{
