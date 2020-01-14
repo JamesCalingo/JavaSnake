@@ -2,3 +2,9 @@ canvas{
   border: solid 2px green;
   background: black
 }
+
+body{
+  font-family: 'Roboto Mono', monospace;
+  background: green;
+  color: white
+}
