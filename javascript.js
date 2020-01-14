@@ -87,6 +87,7 @@ updateLoop = () =>{
   }else{
     snake.pop()
   }
+  // This is so that if the apple position ends up being part of the snake, it'll get moved elsewhere. Unfortunately, there will be one frame of no apple on the screen. Also, if you noticed earlier, the starting position of the apple is inside the starting position of the snake - that's to start the game off with a random position each time.
   for(let i = 1; i < snake.length; i++){
     if(apple[0] == snake[i][0] && apple[1] == snake[i][1]){
      apple = [Math.floor(Math.random() * 30) | 0,
