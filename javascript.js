@@ -7,7 +7,7 @@ var intervalID;
 
 Swal.fire({
   title: "Snake? SNAAAAAAKE?!",
-  text: "Welcome to one of the most iconic digital games from the early days of phones - Snake! Use the arrow keys to move the green snake around the board, collecting the red dots as you go. Each red dot you get adds one point to your score and makes the snake longer. Be careful, though - if the head of the snake hits the edges of the board or another part of its body, then the game ends.",
+  text: "Welcome to one of the most iconic digital games from the early days of cell phones - Snake! Use the arrow keys to move the green snake around the board, collecting the red dots as you go. Each red dot you get adds one point to your score and makes the snake longer. Be careful, though - if the head of the snake hits the edges of the board or another part of its body, then the game ends.",
   confirmButtonText: "Let's go!"
 }).then(() => {intervalID = setInterval(updateLoop, 420)})
 
